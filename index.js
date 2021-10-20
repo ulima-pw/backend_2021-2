@@ -7,6 +7,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended : true
 }))
+app.use(express.static('assets')) // configurando soporte de archivos estaticos
 
 // Endpoints
 app.get('/ejemplo1', (req, res) => {
@@ -52,7 +53,7 @@ app.get('/ejemplo5-formulario', (req, res)=> {
 // Endpoint que recibe los datos del formulario
 app.post('/ejemplo5-formulario', (req, res) => {
     console.log("data_form", req.body)
-    res.send(`<h1>${req.body.frm_nombre}</h1><h2>${req.body.frm_codigo}</h2>`) // interpolacion de strings
+    res.send(`<img src='/images/logo.png'/><script src='/js/index.js'></script><h1>${req.body.frm_nombre}</h1><h2>${req.body.frm_codigo}</h2>`) // interpolacion de strings
 })
 
 app.listen(PORT, () => {
